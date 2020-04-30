@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.temlete.R
 import com.temlete.databinding.FragmentDashboardBinding
@@ -26,9 +25,10 @@ class DashboardFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false)
 
-        dashboardViewModel.text.observe(this, Observer {
-            binding.textDashboard.text = it
-        })
+        binding.apply {
+            viewModel = dashboardViewModel
+            lifecycleOwner = this@DashboardFragment
+        }
 
         dashboardViewModel.getRxDeRandomUser()
         return binding.root

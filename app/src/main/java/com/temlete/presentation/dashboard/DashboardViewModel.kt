@@ -3,7 +3,6 @@ package com.temlete.presentation.dashboard
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.temlete.data.RxApiClient
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,10 +13,13 @@ import io.reactivex.schedulers.Schedulers
 
 class DashboardViewModel(app: Application) : AndroidViewModel(app) {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    val aaa: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
     }
-    val text: LiveData<String> = _text
+
+    val bbb: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
 
     private val rxApiClient = RxApiClient()
     private val disposable = CompositeDisposable()
@@ -28,8 +30,8 @@ class DashboardViewModel(app: Application) : AndroidViewModel(app) {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = {
-                    Log.d("hoge", "getRxDeRandomUser ${it.results[0].gender}")
-                    _text.value = it.results[0].phone
+                    Log.d("hoge", "getRxDeRandomUser ${it.results[0].phone}")
+                    aaa.postValue(it.results[0].phone)
                 },
                 onError = {
                     Log.d("hoge", "onError getRxDeRandomUser $it")
@@ -43,7 +45,7 @@ class DashboardViewModel(app: Application) : AndroidViewModel(app) {
             .subscribeBy(
                 onSuccess = {
                     Log.d("hoge", "getRxDeRandomUser2 ${it.results[0].email}")
-                    _text.value = it.results[0].phone
+                    bbb.postValue(it.results[0].email)
                 },
                 onError = {
                     Log.d("hoge", "onError getRxDeRandomUser2 $it")
