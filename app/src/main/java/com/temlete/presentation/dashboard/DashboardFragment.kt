@@ -1,4 +1,4 @@
-package com.temlete.ui.dashboard
+package com.temlete.presentation.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,6 +29,8 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(this, Observer {
             binding.textDashboard.text = it
         })
+
+        dashboardViewModel.getRxDeRandomUser()
         return binding.root
     }
 }

@@ -1,4 +1,4 @@
-package com.temlete.ui.home
+package com.temlete.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

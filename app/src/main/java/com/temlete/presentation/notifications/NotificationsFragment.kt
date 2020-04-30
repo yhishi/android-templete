@@ -1,4 +1,4 @@
-package com.temlete.ui.notifications
+package com.temlete.presentation.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater
