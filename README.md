@@ -1,4 +1,5 @@
 # Android Templete
+### Overview
 This is sample app when a project starts.
 
 ### Libraries
@@ -13,6 +14,10 @@ This is sample app when a project starts.
 * Retrofit
 * Okhttp
 * Rxjava
+* Navigation
+
+### Other
+* `feature/switch-bottomNavigation-not-update`: Fragment is not regenerated when switching tabs.
 
 ### License
 `MIT License`
